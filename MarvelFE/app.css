@@ -1,0 +1,10 @@
+
+img.charThumb {
+	max-width:200px;
+	max-height:200px;
+}
+
+img.cover {
+	max-width:300px;
+	max-height:300px;
+}
