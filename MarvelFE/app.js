@@ -17,7 +17,8 @@ const app = new Vue({
 		noCovers:false
 	},
 	methods:{
-		search:function() {
+		search:function(event) {
+      if(event) event.preventDefault()
 			if(this.character === '') return;
 			console.log('search for '+this.character);
 			this.noCharacters = false;

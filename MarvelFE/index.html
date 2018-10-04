@@ -8,18 +8,18 @@
 		<style>
 			[v-cloak] {display: none};
 		</style>
-		<link rel="stylesheet" href="app.css">		
+		<link rel="stylesheet" href="app.css">
 	</head>
 	<body>
 
 		<div id="app" v-cloak>
 			<!-- block used to have you search for a char -->
 			<div v-if="needCharacter">
-				<p>
-					Enter a character name: <input v-model="character" type="search"> 
-					<button @click="search()" :disabled="characterSearching">Search</button>
+				<form @submit="search($event)" :disabled="characterSearching">
+					<label>Enter a character name: <input v-model="character" type="search"></label>
+					<input type="submit" value="search">
 					<span v-if="characterSearching"><i>Searching...</i></span>
-				</p>
+				</form>
 
 				<p v-if="noCharacters">
 					I'm sorry but I couldn't find any matches for that search.
