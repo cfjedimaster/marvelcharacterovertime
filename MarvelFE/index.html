@@ -17,13 +17,12 @@
     <!-- block used to have you search for a char -->
     <div v-if="needCharacter">
       <form class="searchForm" @submit="search($event)">
-        <fieldset :disabled="characterSearching">
+        <fieldset class="searchForm__fieldset" :disabled="characterSearching">
           <label class="searchForm__label">Enter a character name: <input class="searchForm__input" v-model="character" type="search"></label>
-          <input type="submit" value="search">
-          <span v-if="characterSearching"><i>Searching...</i></span>
+          <button class="searchForm__input searchForm__submit" @click="search($event)">Search</button>
         </fieldset>
       </form>
-      <p v-if="noCharacters"> I'm sorry but I couldn't find any matches for that search. </p>
+      <p v-if="noCharacters">I'm sorry but I couldn't find any matches for that search.</p>
       <div v-if="characters">
         <ul class="charactersList">
           <li class="characterCard" v-for="character in characters" @click.prevent="loadChar(character)">
