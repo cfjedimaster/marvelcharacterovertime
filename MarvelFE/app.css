@@ -1,10 +1,48 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
 
-img.charThumb {
-	max-width:200px;
-	max-height:200px;
+#app {
+  min-height: 100vh;
+}
+
+.searchForm {
+  background: rgba(0,0,0,0.1);
+  padding: 10px;
 }
 
 img.cover {
-	max-width:300px;
-	max-height:300px;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.charactersList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.characterCard {
+  max-width: 300px;
+  min-width: 200px;
+  flex: 1;
+}
+.characterCard__thumb {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+.characterCard__name {
+  width: 100%;
 }

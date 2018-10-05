@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
-		<style>
-			[v-cloak] {display: none};
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <style> [v-cloak] {display: none};
 		</style>
-		<link rel="stylesheet" href="app.css">
-	</head>
-	<body>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
 
-		<div id="app" v-cloak>
-			<!-- block used to have you search for a char -->
-			<div v-if="needCharacter">
-				<form @submit="search($event)" :disabled="characterSearching">
-					<label>Enter a character name: <input v-model="character" type="search"></label>
-					<input type="submit" value="search">
-					<span v-if="characterSearching"><i>Searching...</i></span>
-				</form>
+<body>
+  <div id="app" v-cloak>
+    <!-- block used to have you search for a char -->
+    <div v-if="needCharacter">
+      <form class="searchForm" @submit="search($event)">
+        <fieldset :disabled="characterSearching">
+          <label class="searchForm__label">Enter a character name: <input class="searchForm__input" v-model="character" type="search"></label>
+          <input type="submit" value="search">
+          <span v-if="characterSearching"><i>Searching...</i></span>
+        </fieldset>
+      </form>
+      <p v-if="noCharacters"> I'm sorry but I couldn't find any matches for that search. </p>
+      <div v-if="characters">
+        <ul class="charactersList">
+          <li class="characterCard" v-for="character in characters" @click.prevent="loadChar(character)">
+            <div class="characterCard__thumb" v-bind:style="{ backgroundImage: `url(${character.thumbnail})` }"></div>
+            <div class="characterCard__name">{{character.name}}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- you have a char, we're getting covers now -->
+    <div v-if="loadingCharacter">
+      <p v-if="loadingCovers">
+        <i>Loading covers...</i>
+      </p>
+      <div v-if="covers">
+        <div v-for="coverData in covers">
+          <h2>{{coverData.year}}</h2>
+          <span v-for="comic in coverData.comics">
+            <img :src="comic.cover" class="cover" :title="comic.title">
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="app.js"></script>
+</body>
 
-				<p v-if="noCharacters">
-					I'm sorry but I couldn't find any matches for that search.
-				</p>
-
-				<div v-if="characters">
-					<ul>
-						<p v-for="character in characters">
-							<a href="" @click.prevent="loadChar(character)">{{character.name}}</a> <img :src="character.thumbnail" class="charThumb">
-						</p>
-					</ul>
-				</div>
-
-			</div>
-
-			<!-- you have a char, we're getting covers now -->
-			<div v-if="loadingCharacter">
-				<p v-if="loadingCovers">
-					<i>Loading covers...</i>
-				</p>
-				<div v-if="covers">
-					<div v-for="coverData in covers">
-						<h2>{{coverData.year}}</h2>
-
-						<span v-for="comic in coverData.comics">
-							<img :src="comic.cover" class="cover" :title="comic.title">
-						</span>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-		<script src="https://unpkg.com/vue"></script>
-		<script src="app.js"></script>
-	</body>
 </html>
