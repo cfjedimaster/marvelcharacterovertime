@@ -1,10 +1,122 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
 
-img.charThumb {
-	max-width:200px;
-	max-height:200px;
+#app {
+  min-height: 100vh;
+}
+
+.searchForm {
+  background: rgba(0,0,0,0.1);
+  padding: 10px;
 }
 
 img.cover {
-	max-width:300px;
-	max-height:300px;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.searchForm__input {
+  border: 1px solid;
+  height: 18px;
+  border-radius: 3px;
+}
+.searchForm__fieldset:disabled {
+  opacity: 0.6;
+}
+.searchForm__submit {
+  background: rgba(0,0,0,0.3);
+  padding: 0 20px;
+  position: relative;
+  transition: padding 0.3s;
+}
+.searchForm__submit:disabled {
+  padding: 0 30px 0 10px;
+}
+.spinner {
+  display: inline-block;
+  width: calc(64px / 4);
+  height: calc(64px / 4);
+}
+.searchForm__submit::after {
+  position:absolute;
+  right: 0;
+  top: 2px;
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid;
+  border-color: #000 transparent #000 transparent;
+  animation: spinner 1.2s linear infinite;
+  transition: right 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+.searchForm__submit:disabled::after {
+  right: 10px;
+  opacity: 1;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.charactersList {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.characterCard {
+  max-width: 300px;
+  min-width: 200px;
+  max-height: 400px;
+  min-height: 300px;
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+}
+.characterCard::before {
+  position: absolute;
+  left: calc(50% - 12px);
+  top: calc(50% - 12px);
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid;
+  border-color: rgba(0,0,0,0.4) transparent rgba(0,0,0,0.4) transparent;
+  animation: spinner 1.2s linear infinite;
+  z-index: -1;
+}
+.characterCard__thumb {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.characterCard__name {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(255,255,255,0.8);
+  padding: 5px;
 }
