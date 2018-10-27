@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width">
   <style> [v-cloak] {display: none};
 		</style>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
   <link rel="stylesheet" href="app.css">
 </head>
 
@@ -20,6 +20,7 @@
         <fieldset class="searchForm__fieldset" :disabled="characterSearching">
           <label class="searchForm__label">Enter a character name: <input class="searchForm__input" v-model="character" type="search"></label>
           <button class="searchForm__input searchForm__submit" @click="search($event)">Search</button>
+          <button class="searchForm__input searchForm__reset" @click="reset()">Reset</button>
         </fieldset>
       </form>
       <p v-if="noCharacters">I'm sorry but I couldn't find any matches for that search.</p>
@@ -39,10 +40,12 @@
       </p>
       <div v-if="covers">
         <div v-for="coverData in covers">
-          <h2>{{coverData.year}}</h2>
-          <span v-for="comic in coverData.comics">
-            <img :src="comic.cover" class="cover" :title="comic.title">
-          </span>
+          <h2 class="covers__year">{{coverData.year}}</h2>
+          <ul class="coversList">
+            <li class="coverCard" v-for="comic in coverData.comics">
+              <img :src="comic.cover" class="coverCard__image" :title="comic.title">
+            </li>
+          </ul>
         </div>
       </div>
     </div>
