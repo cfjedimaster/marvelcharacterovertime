@@ -16,12 +16,19 @@ body {
   background: #222629;
   padding: 10px;
   color: white;
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+.searchForm__label .searchForm__input {
+  margin-left: 5px;
 }
 
 .searchForm__input {
@@ -31,7 +38,6 @@ fieldset {
   box-sizing: border-box;
   padding: 1px 4px;
   margin-right: 3px;
-  vertical-align: bottom;
 }
 
 .searchForm__input:focus {
@@ -154,7 +160,7 @@ fieldset {
   font-weight: 300;
 }
 
-.covers__year {
+.covers__year, .breadcrumbs {
   margin: 0;
   background: #222629;
   width: 100%;
@@ -162,6 +168,34 @@ fieldset {
   box-sizing: border-box;
   padding: 4px;
   font-weight: 300;
+}
+
+.coversView {
+  padding-top: 48px;
+}
+
+.breadcrumbs {
+  border-bottom: 1px solid;
+  position: fixed;
+  top: 0;
+  height: 48px;
+  z-index: 2;
+}
+
+.breadcrumbs h1 {
+  font-weight: 300;
+  margin: 0;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #ec2023;
+  line-height: 32px;
+  display: inline-block;
+}
+
+.breadcrumbs a:hover {
+  border-bottom: 1px solid
 }
 
 .coversList {
@@ -185,6 +219,16 @@ fieldset {
   min-height: 300px;
   flex: 1;
   position: relative;
-  cursor: pointer;
   display: block;
+}
+
+.loadingCovers {
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #222629;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

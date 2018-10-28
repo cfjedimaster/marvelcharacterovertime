@@ -35,10 +35,13 @@
     </div>
     <!-- you have a char, we're getting covers now -->
     <div v-if="loadingCharacter">
-      <p v-if="loadingCovers">
+      <div class="loadingCovers" v-if="loadingCovers">
         <i>Loading covers...</i>
-      </p>
-      <div v-if="covers">
+      </div>
+      <div class="coversView" v-if="covers">
+        <div class="breadcrumbs">
+          <h1><a href="#">Search</a> &gt; {{currentCharacter.name}}</h1>
+        </div>
         <div v-for="coverData in covers">
           <h2 class="covers__year">{{coverData.year}}</h2>
           <ul class="coversList">

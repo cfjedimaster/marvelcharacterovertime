@@ -8,6 +8,7 @@ const app = new Vue({
   data: {
     needCharacter: true,
     character: '',
+    currentCharacter: '',
     characterSearching: false,
     noCharacters: false,
     characters: [],
@@ -34,6 +35,7 @@ const app = new Vue({
     },
     loadChar: function(c) {
       console.log('load', c.id, c.name);
+      this.currentCharacter = c;
       this.needCharacter = false;
       this.loadingCharacter = true;
       fetch(coverAPI + encodeURIComponent(c.id))
