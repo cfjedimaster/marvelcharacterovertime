@@ -1,7 +1,9 @@
 body {
   font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
+  font-weight: 300;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -11,13 +13,12 @@ body {
 }
 
 .searchForm {
-  background: rgba(0,0,0,0.1);
+  background: #222629;
   padding: 10px;
-}
-
-img.cover {
-  max-width: 300px;
-  max-height: 300px;
+  color: white;
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 
 fieldset {
@@ -25,30 +26,59 @@ fieldset {
   margin: 0;
   padding: 0;
 }
-.searchForm__input {
-  border: 1px solid;
-  height: 18px;
-  border-radius: 3px;
+
+.searchForm__label .searchForm__input {
+  margin-left: 5px;
 }
+
+.searchForm__input {
+  border: none;
+  height: 18px;
+  border-radius: 1px;
+  box-sizing: border-box;
+  padding: 1px 4px;
+  margin-right: 3px;
+}
+
+.searchForm__input:focus {
+  outline: none;
+  box-shadow: 0 0 1px 2px #ec2023;
+}
+
 .searchForm__fieldset:disabled {
   opacity: 0.6;
 }
+
 .searchForm__submit {
-  background: rgba(0,0,0,0.3);
+  background: #ec2023;
   padding: 0 20px;
   position: relative;
   transition: padding 0.3s;
+  color: white;
+  text-transform: uppercase;
 }
+
+.searchForm__reset {
+  background: transparent;
+  padding: 0 20px;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
 .searchForm__submit:disabled {
   padding: 0 30px 0 10px;
 }
+
 .spinner {
   display: inline-block;
   width: calc(64px / 4);
   height: calc(64px / 4);
 }
+
 .searchForm__submit::after {
-  position:absolute;
+  position: absolute;
   right: 0;
   top: 2px;
   content: "";
@@ -57,19 +87,22 @@ fieldset {
   height: 8px;
   border-radius: 50%;
   border: 2px solid;
-  border-color: #000 transparent #000 transparent;
+  border-color: #FFF transparent #FFF transparent;
   animation: spinner 1.2s linear infinite;
   transition: right 0.3s, opacity 0.3s;
   opacity: 0;
 }
+
 .searchForm__submit:disabled::after {
   right: 10px;
   opacity: 1;
 }
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -84,6 +117,7 @@ fieldset {
   padding: 0;
   list-style: none;
 }
+
 .characterCard {
   max-width: 300px;
   min-width: 200px;
@@ -93,6 +127,7 @@ fieldset {
   position: relative;
   cursor: pointer;
 }
+
 .characterCard::before {
   position: absolute;
   left: calc(50% - 12px);
@@ -103,20 +138,97 @@ fieldset {
   height: 20px;
   border-radius: 50%;
   border: 4px solid;
-  border-color: rgba(0,0,0,0.4) transparent rgba(0,0,0,0.4) transparent;
+  border-color: rgba(0, 0, 0, 0.4) transparent rgba(0, 0, 0, 0.4) transparent;
   animation: spinner 1.2s linear infinite;
   z-index: -1;
 }
+
 .characterCard__thumb {
   width: 100%;
   height: 100%;
   background-size: cover;
   background-position: center;
 }
+
 .characterCard__name {
   width: 100%;
   position: absolute;
   bottom: 0;
-  background: rgba(255,255,255,0.8);
+  background: rgba(34, 38, 41, 0.8);
   padding: 5px;
+  color: white;
+  font-weight: 300;
+}
+
+.covers__year, .breadcrumbs {
+  margin: 0;
+  background: #222629;
+  width: 100%;
+  color: white;
+  box-sizing: border-box;
+  padding: 4px;
+  font-weight: 300;
+}
+
+.coversView {
+  padding-top: 48px;
+}
+
+.breadcrumbs {
+  border-bottom: 1px solid;
+  position: fixed;
+  top: 0;
+  height: 48px;
+  z-index: 2;
+}
+
+.breadcrumbs h1 {
+  font-weight: 300;
+  margin: 0;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #ec2023;
+  line-height: 32px;
+  display: inline-block;
+}
+
+.breadcrumbs a:hover {
+  border-bottom: 1px solid
+}
+
+.coversList {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coverCard {
+  display: block;
+}
+
+.coverCard__image {
+  max-width: 300px;
+  min-width: 200px;
+  max-height: 400px;
+  min-height: 300px;
+  flex: 1;
+  position: relative;
+  display: block;
+}
+
+.loadingCovers {
+  position: fixed;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #222629;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
