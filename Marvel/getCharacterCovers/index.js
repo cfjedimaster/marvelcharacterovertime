@@ -56,7 +56,7 @@ module.exports = async function (context, req) {
                 }
 
                 //temp hack:
-                firstDate = 2015;
+                //firstDate = 2015;
 
                 //get this year
                 let thisYear = new Date().getFullYear();

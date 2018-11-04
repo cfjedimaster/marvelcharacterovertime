@@ -2,7 +2,7 @@ const rp = require('request-promise');
 const API_PUB_KEY = process.env.API_PUB_KEY;
 const API_PRI_KEY = process.env.API_PRI_KEY;
 
-const  crypto = require('crypto');
+const crypto = require('crypto');
 
 module.exports = async function (context, req) {
 
